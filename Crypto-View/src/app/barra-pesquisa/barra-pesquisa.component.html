@@ -1,5 +1,12 @@
-<p>barra-pesquisa works!</p>
+<p>Digite o nome da criptomoeda:</p>
+<input type="text" (input)="pesquisar($event)" placeholder="Exemplo: dogecoin" />
 
-<input type="text" (input)="pesquisar($event)">
+<div *ngIf="cryptoName && cryptoImage; else notFound">
+  <h2>{{ cryptoName }} ({{ cryptoSymbol }})</h2>
+  <img [src]="cryptoImage" [alt]="cryptoName" style="width: 150px; height: 150px;" />
+</div>
 
-<p>{{resultMessage}}</p>
+<ng-template #notFound>
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+</ng-template>
+

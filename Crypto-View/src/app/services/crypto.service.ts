@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CryptoService {
-  private apiUrl = 'https://api.coingecko.com/api/v3/coins/markets';
-
   constructor(private http: HttpClient) {}
 
-  getCryptos(currency: string = 'usd'): Observable<any> {
-    return this.http.get(`${this.apiUrl}?vs_currency=${currency}`);
+  getCryptos(moeda:string): Observable<any> {
+    return this.http.get(`https://api.coingecko.com/api/v3/coins/${moeda}`);
   }
+
+
 }
